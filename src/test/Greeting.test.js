@@ -26,4 +26,14 @@ describe("Greeting component", () => {
     const outputElement = screen.getByText("changed", { exact: false });
     expect(outputElement).toBeInTheDocument();
   });
+
+  test(" should not renders good to see you if button is  clicked", () => {
+    render(<Greeting />);
+
+    const buttonElement=screen.getByRole('button')
+    userEvent.click(buttonElement)
+
+    const outputElement = screen.queryByText("good to see you", { exact: false });
+    expect(outputElement).toBeNull();
+  });
 });
